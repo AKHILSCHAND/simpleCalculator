@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+    <style>
+        .button{
+            font-size: 25px;
+            padding: 15px 30px;
+            margin: auto;
+            align-items: center;
+
+        }
+        .h1{
+            background-color:black;
+            color:white;
+        }
+        .container {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* This ensures the container takes the full viewport height */
+        }
+        .btn {
+            position: absolute;
+            top: 200px; 
+            right: 200px; 
+            padding: 10px 20px;
+            background-color: #010810; 
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .yellow-bg {
+            background-color: rgb(6, 2, 9) !important; /* Override background color with yellow */
+           
+        }
+        .table-border-white {
+            border: 2px solid white; /* Change border color to white */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <button class="btn" onclick="changeStyles()">Change Color</button> 
+        <table  cellspacing="5px" cellpadding="5px" style='background-color:black;'>
+            <caption><h1 class="h1">Simple Calculator</h1></caption>
+            
+            <tr>
+                <td colspan=3 ><input class="button" type="text" id='result'></td>
+                <td><button class="button" onclick='ac()'>AC</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button" onclick='show(1)'>1</button></td>
+                <td align="center"><button class="button" onclick='show(2)'>2</button></td>
+                <td align="center"><button class="button" onclick='show(3)'>3</button></td>
+                <td align="center"><button class="button" onclick="show('+')">+</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button" onclick='show(4)'>4</button></td>
+                <td align="center"><button class="button" onclick='show(5)'>5</button></td>
+                <td align="center"><button class="button" onclick='show(6)'>6</button></td>
+                <td align="center"><button class="button" onclick="show('-')">-</button></td>
+            </tr>
+            <tr>
+                <td align="center"> <button class="button" onclick='show(7)'>7</button></td>
+                <td align="center"><button class="button" onclick='show(8)'>8</button></td>
+                <td align="center"><button class="button" onclick='show(9)'>9</button></td>
+                <td align="center"><button class="button" onclick="show('*')">*</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button" onclick='show(0)'>0</button></td>
+                <td align="center"><button class="button" onclick="show('%')">%</button></td>
+                <td align="center"><button class="button" onclick="show('/')">/</button></td>
+                <td align="center"><button class="button" onclick="calculate()">=</button></td>
+            </tr>
+            
+            
+    
+        </table>
+    </div>
+
+
+
+    <script>
+        function ac(){
+            document.getElementById('result').value=''
+        }
+
+        function show(input){
+            document.getElementById('result').value+=input
+        }
+
+        function calculate(input){
+            output = eval(document.getElementById('result').value)
+            document.getElementById('result').value=output
+        }
+        function changeStyles() {
+            const container = document.querySelector('.container');
+            const table = document.querySelector('table');
+            container.classList.toggle('yellow-bg');
+            table.classList.toggle('table-border-white');
+        }
+
+
+    </script>
+</body>
+</html>
